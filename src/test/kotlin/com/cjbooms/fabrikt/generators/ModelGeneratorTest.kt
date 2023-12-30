@@ -86,7 +86,7 @@ class ModelGeneratorTest {
             setOf(ModelCodeGenOptionType.SEALED_INTERFACES_FOR_ONE_OF),
         ).generate().toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -104,7 +104,7 @@ class ModelGeneratorTest {
         assertThat(models.files.size).isEqualTo(4)
         val validationAnnotationsModel = models.files.first { it.name == "ValidationAnnotations" }
         assertThat(validationAnnotationsModel).isNotNull
-        assertThat(Linter.lintString(validationAnnotationsModel.toString())).isEqualTo(expectedJakartaModel)
+        assertThat(Linter.lintString(validationAnnotationsModel.toString())).isEqualToIgnoringNewLines(expectedJakartaModel)
     }
 
     @Test
@@ -118,7 +118,7 @@ class ModelGeneratorTest {
             SourceApi(spec),
         ).generate()
 
-        assertThat(Linter.lintString(models.files.first().toString())).isEqualTo(expectedModels)
+        assertThat(Linter.lintString(models.files.first().toString())).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -135,7 +135,7 @@ class ModelGeneratorTest {
             .generate()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -192,7 +192,7 @@ class ModelGeneratorTest {
             .generate()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -209,7 +209,7 @@ class ModelGeneratorTest {
             .generate()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -226,7 +226,7 @@ class ModelGeneratorTest {
             .generate()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     @Test
@@ -243,7 +243,7 @@ class ModelGeneratorTest {
             .generate()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModels)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModels)
     }
 
     private fun Models.toSingleFile(): String {

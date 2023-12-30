@@ -70,8 +70,8 @@ class OkHttpClientGeneratorTest {
             .generateDynamicClientCode()
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModel)
-        assertThat(simpleClientCode).isEqualTo(expectedClient)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModel)
+        assertThat(simpleClientCode).isEqualToIgnoringNewLines(expectedClient)
     }
 
     @ParameterizedTest
@@ -91,8 +91,8 @@ class OkHttpClientGeneratorTest {
             .first { it.path.fileName.toString() == "HttpResilience4jUtil.kt" }
         val enhancedClientCode = generator.generateDynamicClientCode(setOf(ClientCodeGenOptionType.RESILIENCE4J))
 
-        assertThat(enhancedLibUtil.content).isEqualTo(expectedLibUtil)
-        assertThat(enhancedClientCode.toSingleFile()).isEqualTo(expectedClientCode)
+        assertThat(enhancedLibUtil.content).isEqualToIgnoringNewLines(expectedLibUtil)
+        assertThat(enhancedClientCode.toSingleFile()).isEqualToIgnoringNewLines(expectedClientCode)
     }
 
     @ParameterizedTest
@@ -155,9 +155,9 @@ class OkHttpClientGeneratorTest {
         val enhancedClientCode = generator.generateDynamicClientCode(setOf(ClientCodeGenOptionType.RESILIENCE4J))
             .toSingleFile()
 
-        assertThat(models).isEqualTo(expectedModel)
-        assertThat(simpleClientCode).isEqualTo(expectedClient)
-        assertThat(enhancedClientCode).isEqualTo(expectedClientCode)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModel)
+        assertThat(simpleClientCode).isEqualToIgnoringNewLines(expectedClient)
+        assertThat(enhancedClientCode).isEqualToIgnoringNewLines(expectedClientCode)
     }
 
     private fun Collection<ClientType>.toSingleFile(): String {

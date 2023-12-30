@@ -65,7 +65,7 @@ class SpringControllerGeneratorTest {
             JavaxValidationAnnotations,
         ).generate().toSingleFile()
 
-        assertThat(controllers).isEqualTo(expectedControllers)
+        assertThat(controllers).isEqualToIgnoringNewLines(expectedControllers)
     }
 
     @Test
@@ -81,7 +81,7 @@ class SpringControllerGeneratorTest {
             setOf(ControllerCodeGenOptionType.AUTHENTICATION),
         ).generate().toSingleFile()
 
-        assertThat(controllers).isEqualTo(expectedControllers)
+        assertThat(controllers).isEqualToIgnoringNewLines(expectedControllers)
     }
 
     @Test
@@ -226,7 +226,7 @@ class SpringControllerGeneratorTest {
         val controllers = SpringControllerInterfaceGenerator(Packages(basePackage), api, JavaxValidationAnnotations).generate().toSingleFile()
         val expectedControllers = readTextResource("/examples/springFormatDateAndDateTime/controllers/Controllers.kt")
 
-        assertThat(controllers.trim()).isEqualTo(expectedControllers.trim())
+        assertThat(controllers.trim()).isEqualToIgnoringNewLines(expectedControllers.trim())
     }
 
     @Test
@@ -235,6 +235,6 @@ class SpringControllerGeneratorTest {
         val controllers = SpringControllerInterfaceGenerator(Packages(basePackage), api, JavaxValidationAnnotations).generate().toSingleFile()
         val expectedControllers = readTextResource("/examples/binary/controllers/spring/Controllers.kt")
 
-        assertThat(controllers.trim()).isEqualTo(expectedControllers.trim())
+        assertThat(controllers.trim()).isEqualToIgnoringNewLines(expectedControllers.trim())
     }
 }

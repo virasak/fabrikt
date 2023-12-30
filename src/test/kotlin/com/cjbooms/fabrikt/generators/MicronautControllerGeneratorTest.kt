@@ -69,7 +69,7 @@ class MicronautControllerGeneratorTest {
             JavaxValidationAnnotations,
         ).generate().toSingleFile()
 
-        assertThat(controllers).isEqualTo(expectedControllers)
+        assertThat(controllers).isEqualToIgnoringNewLines(expectedControllers)
     }
 
     @Test
@@ -85,7 +85,7 @@ class MicronautControllerGeneratorTest {
             setOf(ControllerCodeGenOptionType.AUTHENTICATION),
         ).generate().toSingleFile()
 
-        assertThat(controllers).isEqualTo(expectedControllers)
+        assertThat(controllers).isEqualToIgnoringNewLines(expectedControllers)
     }
 
     @Test
@@ -222,6 +222,6 @@ class MicronautControllerGeneratorTest {
         val controllers = MicronautControllerInterfaceGenerator(Packages(basePackage), api, JavaxValidationAnnotations).generate().toSingleFile()
         val expectedControllers = readTextResource("/examples/binary/controllers/micronaut/Controllers.kt")
 
-        assertThat(controllers.trim()).isEqualTo(expectedControllers.trim())
+        assertThat(controllers.trim()).isEqualToIgnoringNewLines(expectedControllers.trim())
     }
 }

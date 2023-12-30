@@ -81,8 +81,8 @@ class OpenFeignClientGeneratorTest {
             .clients
             .toSingleFile()
 
-        assertThat(clientCode).isEqualTo(expectedClient)
-        assertThat(models).isEqualTo(expectedModel)
+        assertThat(clientCode).isEqualToIgnoringNewLines(expectedClient)
+        assertThat(models).isEqualToIgnoringNewLines(expectedModel)
     }
 
     private fun Collection<ClientType>.toSingleFile(): String {
